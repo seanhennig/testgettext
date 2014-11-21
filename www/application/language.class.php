@@ -41,4 +41,58 @@ class setLanguage {
 		textdomain($this->domain);
 	}
 }
+
+/**
+ * handles the .po and .mo files
+ * reads them and writes them and also compiles them to .mo files
+ * 
+ * @author sean
+ */
+class handlePoFiles  {
+	/*
+	 * @param string $lang
+	 * @param string $domain
+	 * @access public
+	 */
+	public $lang;
+	public $domain;
+	
+	/*
+	 * @param array $result
+	 */
+	// private $result;
+	
+	/**
+	 * sets the default language set in config
+	 * @param string $domain
+	 */
+	public function __construct($lang, $domain) {
+		$this->lang = $lang;
+		$this->domain = $domain;
+	}
+	
+	function readPoFile() {
+		$this->file = __LOCALE.$this->lang.'/'.$this->domain.'.po';
+		
+		/*
+		$poparser = new PoParser();
+		try {
+			$result = $poparser->parseFile($this->file);
+		} catch (\Exception $e) {
+			$result = array();
+			$this->fail($e->getMessage());
+		}
+		
+		$this->assertCount(2, $result);
+		*/
+	}
+	
+	function writePoFile() {
+	
+	}
+	
+	function writeMoFile() {
+	
+	}
+}
 ?>
