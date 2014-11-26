@@ -45,6 +45,12 @@ include __APPLICATION_PATH . 'template.class.php';
 /*** include the language class ***/
 include __APPLICATION_PATH . 'language.class.php';
 
+/*** include the php po parser ***/
+include __APPLICATION_PATH . 'PHP-po-parser/PoParser.class.php';
+include __APPLICATION_PATH . 'PHP-po-parser/InterfaceHandler.class.php';
+include __APPLICATION_PATH . 'PHP-po-parser/FileHandler.class.php';
+include __APPLICATION_PATH . 'PHP-po-parser/StringHandler.class.php';
+
 
 /*** auto load model classes ***/
 function __autoload($class_name) {

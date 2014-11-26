@@ -1,6 +1,7 @@
 <?php
 /**
- * This class manages gettext, internationalization (I18n) and everything to do with language
+ * This class manages gettext, internationalization (I18n)
+ * and everything to do with translating and it's coordination
  * 
  * @author sean
  */
@@ -72,19 +73,23 @@ class handlePoFiles  {
 	}
 	
 	function readPoFile() {
-		$this->file = __LOCALE.$this->lang.'/'.$this->domain.'.po';
+		$this->file = __LOCALE.$this->lang.'/LC_MESSAGES/'.preg_replace('/\\W/', '', $this->domain).'.po';
 		
-		/*
-		$poparser = new PoParser();
-		try {
-			$result = $poparser->parseFile($this->file);
-		} catch (\Exception $e) {
-			$result = array();
-			$this->fail($e->getMessage());
+		$result  = array();
+		if (file_exists($this->file)) {
+			$poparser = new PoParser();
+			try {
+				$result = $poparser->parseFile($this->file);
+			} catch (\Exception $e) {
+				$result = array();
+				$this->fail($e->getMessage());
+			}
+		} else {
+			// create proper error as in other classes
+			echo "file not found: ".$this->file."<br  />";
 		}
 		
-		$this->assertCount(2, $result);
-		*/
+		return ($result);
 	}
 	
 	function writePoFile() {

@@ -1,7 +1,5 @@
 <?php
 
-namespace Sepia;
-
 /**
  *    Copyright (c) 2012 Raúl Ferràs raul.ferras@gmail.com
  *    All rights reserved.

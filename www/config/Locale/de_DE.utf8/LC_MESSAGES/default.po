@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: test\n"
 "POT-Creation-Date: 2014-11-19 11:18+0100\n"
-"PO-Revision-Date: 2014-11-19 11:18+0100\n"
+"PO-Revision-Date: 2014-11-25 14:03+0100\n"
 "Last-Translator: \n"
 "Language-Team: test <test@test.de>\n"
 "Language: de_DE\n"
@@ -17,13 +17,14 @@ msgstr ""
 
 #: /home/sean/workspace/test/www/index.php:31
 msgid "message1"
-msgstr "Nachricht 1"
+msgstr "Nachricht 1  ..."
 
 #: /home/sean/workspace/test/www/index.php:33
 msgid "message2"
 msgstr "Nachricht 2"
 
-#: /home/sean/workspace/test/www/index.php:35
+# This is a  comment
+#: /home/sean/workspace/test/www/index.php:35 test
 msgid "message3"
 msgstr "Nachricht 3"
 

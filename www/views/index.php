@@ -10,3 +10,5 @@ echo _("message3");
 echo '<br>';
 echo _("message4");
 ?>
+<br /> <br  />
+<?php echo $mailstring; ?>

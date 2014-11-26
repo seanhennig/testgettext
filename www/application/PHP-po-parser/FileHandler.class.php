@@ -1,7 +1,5 @@
 <?php
 
-namespace Sepia;
-
 /**
  *    Copyright (c) 2012 Raúl Ferràs raul.ferras@gmail.com
  *    All rights reserved.
@@ -32,10 +30,54 @@ namespace Sepia;
  *
  * https://github.com/raulferras/PHP-po-parser
  */
-interface InterfaceHandler
+class FileHandler implements InterfaceHandler
 {
-    public function getNextLine();
-    public function ended();
-    public function close();
-    public function save($output);
+    protected $fileHandle;
+    protected $encoding;
+
+    public function __construct($filepath)
+    {
+        if (file_exists($filepath) === false) {
+            throw new \Exception('PoParser: Input File does not exists: "' . htmlspecialchars($filepath) . '"');
+        } elseif (is_readable($filepath) === false) {
+            throw new \Exception('PoParser: File is not readable: "' . htmlspecialchars($filepath) . '"');
+        }
+
+        $this->fileHandle = @fopen($filepath, "r");
+        if ($this->fileHandle===false) {
+            throw new \Exception('PoParser: Could not open file: "' . htmlspecialchars($filepath) . '"');
+        }
+
+
+        // Guess encoding
+        $wholefile = file_get_contents($filepath, false, null, 0, 1000);
+        $encoding  = mb_detect_encoding($wholefile);
+        if ($encoding===false) {
+
+        } else {
+            $this->encoding = $encoding;
+        }
+    }
+
+
+    public function getNextLine()
+    {
+        return fgets($this->fileHandle);
+    }
+
+    public function ended()
+    {
+        return feof($this->fileHandle);
+    }
+
+    public function close()
+    {
+        @fclose($this->fileHandle);
+    }
+
+
+    public function save($outputFile)
+    {
+
+    }
 }
